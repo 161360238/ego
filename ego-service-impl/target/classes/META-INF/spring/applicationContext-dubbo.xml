@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://code.alibabatech.com/schema/dubbo 
+		http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+	<!-- 给当前Provider自定义名字 -->
+	<dubbo:application name="dubbo-service" />
+	<!-- 配置注册中心 -->
+	<dubbo:registry address="192.168.126.128:2181" protocol="zookeeper"></dubbo:registry>
+	<!-- 配置端口 -->
+	<dubbo:protocol name="dubbo" port="20888"></dubbo:protocol>
+	<!-- 注册功能 -->
+	<dubbo:service interface="com.ego.dubbo.service.TbItemDubboService"
+		ref="tbItemDubboServiceImpl"></dubbo:service>
+	<bean id="tbItemDubboServiceImpl" class="com.ego.dubbo.service.impl.TbItemDubboServiceImpl"></bean>
+	<import resource="../../applicationContext.xml" />
+
+</beans>

@@ -156,10 +156,12 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-	<modules>
+	<!--  <modules>
 		<module>ego</module>
 		<module>ego-pojo</module>
 		<module>ego-service</module>
 		<module>ego-service-impl</module>
-	</modules>
+		<module>ego-commons</module>
+		<module>ego-manage</module>
+	</modules>  -->
 </project>
