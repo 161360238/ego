@@ -10,6 +10,9 @@
         <dependent-module archiveName="ego-pojo-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ego-pojo/ego-pojo">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="ego-commons-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ego-commons/ego-commons">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="ego-manage"/>
         <property name="java-output-path" value="/ego-manage/target/classes"/>
     </wb-module>
