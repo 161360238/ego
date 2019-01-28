@@ -33,4 +33,9 @@ public class TbItemDubboServiceImpl implements TbItemDubboService {
 		return datagrid;
 	}
 
+	@Override
+	public int update(TbItem tbItem) {
+		return tbItemMapper.updateByPrimaryKeySelective(tbItem);
+	}
+
 }

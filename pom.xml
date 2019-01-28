@@ -163,5 +163,5 @@
 		<module>ego-service-impl</module>
 		<module>ego-commons</module>
 		<module>ego-manage</module>
-	</modules>  -->
+	</modules>   -->
 </project>
