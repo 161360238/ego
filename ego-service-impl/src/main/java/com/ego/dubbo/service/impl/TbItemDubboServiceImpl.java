@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ego.commons.pojo.EasyUIDataGrid;
 import com.ego.dubbo.service.TbItemDubboService;
+import com.ego.mapper.TbItemDescMapper;
 import com.ego.mapper.TbItemMapper;
 import com.ego.pojo.TbItem;
+import com.ego.pojo.TbItemDesc;
 import com.ego.pojo.TbItemExample;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -16,6 +18,9 @@ public class TbItemDubboServiceImpl implements TbItemDubboService {
 
 	@Autowired
 	private TbItemMapper tbItemMapper;
+
+	@Autowired
+	private TbItemDescMapper tbItemDescMapperImpl;
 
 	@Override
 	public EasyUIDataGrid show(int page, int rows) {
@@ -33,9 +38,32 @@ public class TbItemDubboServiceImpl implements TbItemDubboService {
 		return datagrid;
 	}
 
+	/**
+	 * 根据id修改状态
+	 */
 	@Override
 	public int update(TbItem tbItem) {
 		return tbItemMapper.updateByPrimaryKeySelective(tbItem);
 	}
 
+	@Override
+	public int insert(TbItem item) {
+		return tbItemMapper.insert(item);
+	}
+
+	@Override
+	public int insertTbItemDesc(TbItem item, TbItemDesc desc) throws Exception {
+		int index = 0;
+		try {
+			index = tbItemMapper.insertSelective(item);
+			index += tbItemDescMapperImpl.insertSelective(desc);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if (index == 2) {
+			return 1;
+		} else {
+			throw new Exception("新增失败");
+		}
+	}
 }
