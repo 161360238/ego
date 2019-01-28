@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.ego.commons.pojo.EasyUIDataGrid;
 import com.ego.commons.pojo.EgoResult;
 import com.ego.manage.service.TbItemService;
+import com.ego.pojo.TbItem;
 
 @Controller
 public class TbItemController {
@@ -90,5 +91,28 @@ public class TbItemController {
 			egoResult.setStatus(200);
 		}
 		return egoResult;
+	}
+
+	/**
+	 * 添加商品
+	 * @param item
+	 * @param desc
+	 * @return
+	 */
+	@RequestMapping("item/save")
+	@ResponseBody
+	public EgoResult insert(TbItem item,String desc){
+		EgoResult rs=new EgoResult();
+		int result;
+		try {
+			result = tbServiceImpl.save(item, desc);
+			if(result>0){
+				rs.setStatus(200);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			rs.setMessage(e.getMessage());
+		}
+		return rs;
 	}
 }

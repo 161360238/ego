@@ -114,6 +114,8 @@
 		$.post("/item/save",$("#itemAddForm").serialize(), function(data){
 			if(data.status == 200){
 				$.messager.alert('提示','新增商品成功!');
+			}else{
+				$.messager.alert('提示','新增商品失敗!');
 			}
 		});
 	}
