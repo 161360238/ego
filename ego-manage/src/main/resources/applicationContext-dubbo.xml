@@ -9,7 +9,7 @@
 		http://www.springframework.org/schema/context/spring-context.xsd
 		http://code.alibabatech.com/schema/dubbo 
 		http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
-	<!-- 给当前Provider自定义个名字 -->
+	<!-- 给当前Consumer自定义个名字 -->
 	<dubbo:application name="dubbo-manage"/>
 	<!-- 配置注册中心  -->
 	<dubbo:registry address="192.168.126.128:2181" protocol="zookeeper"></dubbo:registry>

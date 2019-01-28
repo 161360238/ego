@@ -1,8 +1,9 @@
 package com.ego.commons.pojo;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class EasyUIDataGrid {
+public class EasyUIDataGrid implements Serializable{
 	//当前页要显示的数据
 	private List<?> rows;
 	//总条数
