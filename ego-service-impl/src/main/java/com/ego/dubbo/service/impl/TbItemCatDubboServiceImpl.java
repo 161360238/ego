@@ -22,4 +22,10 @@ public class TbItemCatDubboServiceImpl implements TbItemCatDubboService {
 
 	}
 
+	@Override
+	public TbItemCat selectById(long id) {
+		// TODO Auto-generated method stub
+		return tbItemCatMapper.selectByPrimaryKey(id);
+	}
+
 }

@@ -42,8 +42,8 @@
     <tx:advice id="txAdvice" transaction-manager="txManage">
     	<tx:attributes>
     		<tx:method name="ins*" rollback-for="java.lang.Exception"/>
-    		<tx:method name="del*"/>
-    		<tx:method name="upd*"/>
+    		<tx:method name="del*" rollback-for="java.lang.Exception"/>
+    		<tx:method name="upd*" rollback-for="java.lang.Exception"/>
     		<tx:method name="*" read-only="true"/>
     	</tx:attributes>
     </tx:advice>
