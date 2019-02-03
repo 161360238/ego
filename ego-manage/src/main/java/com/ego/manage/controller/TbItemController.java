@@ -101,11 +101,11 @@ public class TbItemController {
 	 */
 	@RequestMapping("item/save")
 	@ResponseBody
-	public EgoResult insert(TbItem item,String desc){
+	public EgoResult insert(TbItem item,String desc,String itemParams){
 		EgoResult rs=new EgoResult();
 		int result;
 		try {
-			result = tbServiceImpl.save(item, desc);
+			result = tbServiceImpl.save(item, desc,itemParams);
 			if(result>0){
 				rs.setStatus(200);
 			}

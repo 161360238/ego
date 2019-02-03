@@ -167,4 +167,8 @@
 	<!-- <modules> <module>ego</module> <module>ego-pojo</module> <module>ego-service</module> 
 		<module>ego-service-impl</module> <module>ego-commons</module> <module>ego-manage</module> 
 		</modules> -->
+	<modules>
+		<module>ego-portal</module>
+		<module>ego-item</module>
+	</modules>
 </project>

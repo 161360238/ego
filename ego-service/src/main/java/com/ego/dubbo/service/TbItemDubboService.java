@@ -3,6 +3,7 @@ package com.ego.dubbo.service;
 import com.ego.commons.pojo.EasyUIDataGrid;
 import com.ego.pojo.TbItem;
 import com.ego.pojo.TbItemDesc;
+import com.ego.pojo.TbItemParamItem;
 /**
  * 商品的dubbo接口
  * @author 王杰
@@ -36,6 +37,6 @@ public interface TbItemDubboService {
 	 * @return
 	 * @throws Exception
 	 */
-	int insertTbItemDesc(TbItem item,TbItemDesc desc) throws Exception;
+	int insertTbItemDesc(TbItem item,TbItemDesc desc,TbItemParamItem paramItem) throws Exception;
 
 }

@@ -21,7 +21,7 @@ public interface TbItemService {
 	 */
 	int update(String ids,byte status);
 	
-	int save(TbItem item,String desc) throws Exception;
+	int save(TbItem item,String desc,String itemParams) throws Exception;
 	
 
 }

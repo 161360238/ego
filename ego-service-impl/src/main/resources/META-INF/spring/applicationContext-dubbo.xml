@@ -31,6 +31,15 @@
 	<dubbo:service interface="com.ego.dubbo.service.TbItemParamDubboService"
 		ref="tbItemParamDubboServiceImpl"></dubbo:service>
 	<bean id="tbItemParamDubboServiceImpl" class="com.ego.dubbo.service.impl.TbItemParamDubboServiceImpl"></bean>
+	<!-- 内容分类 -->
+	<dubbo:service interface="com.ego.dubbo.service.TbContentCategoryDubboService"
+		ref="tbContentCategoryDubboServiceImpl"></dubbo:service>
+	<bean id="tbContentCategoryDubboServiceImpl"
+		class="com.ego.dubbo.service.impl.TbContentCategoryDubboServiceImpl"></bean>
+	<!-- 具体内容 -->
+	<dubbo:service interface="com.ego.dubbo.service.TbContentDubboService"
+		ref="tbContentDubboServiceImpl"></dubbo:service>
+	<bean id="tbContentDubboServiceImpl" class="com.ego.dubbo.service.impl.TbContentDubboServiceImpl"></bean>
 
 
 	<import resource="../../applicationContext.xml" />

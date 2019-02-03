@@ -1,6 +1,7 @@
 package com.ego.dubbo.service;
 
 import com.ego.commons.pojo.EasyUIDataGrid;
+import com.ego.pojo.TbItemParam;
 
 public interface TbItemParamDubboService {
 	
@@ -19,5 +20,17 @@ public interface TbItemParamDubboService {
 	 */
 	int delByIds(String ids) throws Exception; 
 	
+	/**
+	 * 根据id查询规格参数
+	 * @param id
+	 * @return
+	 */
+	TbItemParam selectById(long id);
+	/**
+	 * 新增，支持主键自增
+	 * @param param
+	 * @return
+	 */
+	int insParam(TbItemParam param);
 
 }
