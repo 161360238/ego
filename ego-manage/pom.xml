@@ -16,6 +16,11 @@
 		</dependency>
 		<dependency>
 			<groupId>com.ego</groupId>
+			<artifactId>ego-redis</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ego</groupId>
 			<artifactId>ego-commons</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>

@@ -170,5 +170,6 @@
 	<modules>
 		<module>ego-portal</module>
 		<module>ego-item</module>
+		<module>ego-redis</module>
 	</modules>
 </project>

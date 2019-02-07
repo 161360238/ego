@@ -38,4 +38,20 @@ public class TbContentDubboServiceImpl implements TbContentDubboService {
 		return tbContentMapperImpl.insertSelective(content);
 	}
 
+	@Override
+	public List<TbContent> selByContent(int count, boolean isSort) {
+		TbContentExample example = new TbContentExample();
+		if (isSort) {
+			example.setOrderByClause("updated desc");
+		}
+		if (count != 0) {
+			PageHelper.startPage(1, count);
+			List<TbContent> list = tbContentMapperImpl.selectByExample(example);
+			PageInfo<TbContent> pi = new PageInfo<>(list);
+			return pi.getList();
+		} else {
+			return tbContentMapperImpl.selectByExample(example);
+		}
+	}
+
 }
