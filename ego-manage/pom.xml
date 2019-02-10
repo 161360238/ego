@@ -9,25 +9,27 @@
 	<artifactId>ego-manage</artifactId>
 	<packaging>war</packaging>
 	<dependencies>
+		<!-- ftpclient -->
 		<dependency>
-			<groupId>com.ego</groupId>
-			<artifactId>ego-service</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<groupId>commons-net</groupId>
+			<artifactId>commons-net</artifactId>
 		</dependency>
+		<!-- 依赖redis -->
 		<dependency>
 			<groupId>com.ego</groupId>
 			<artifactId>ego-redis</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.ego</groupId>
-			<artifactId>ego-commons</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<!-- 分页插件 -->
 		<dependency>
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper</artifactId>
+		</dependency>
+		<!-- 依赖接口 -->
+		<dependency>
+			<groupId>com.ego</groupId>
+			<artifactId>ego-service</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<!-- jedis -->
 		<dependency>

@@ -20,9 +20,9 @@ public class TbItemDubboServiceImpl implements TbItemDubboService {
 
 	@Autowired
 	private TbItemMapper tbItemMapper;
-	
+
 	@Autowired
-	private TbItemParamItemMapper tbItemParamItemMapper; 
+	private TbItemParamItemMapper tbItemParamItemMapper;
 
 	@Autowired
 	private TbItemDescMapper tbItemDescMapperImpl;
@@ -57,12 +57,12 @@ public class TbItemDubboServiceImpl implements TbItemDubboService {
 	}
 
 	@Override
-	public int insertTbItemDesc(TbItem item, TbItemDesc desc,TbItemParamItem paramItem) throws Exception {
+	public int insertTbItemDesc(TbItem item, TbItemDesc desc, TbItemParamItem paramItem) throws Exception {
 		int index = 0;
 		try {
 			index = tbItemMapper.insertSelective(item);
 			index += tbItemDescMapperImpl.insertSelective(desc);
-			index +=tbItemParamItemMapper.insertSelective(paramItem);
+			index += tbItemParamItemMapper.insertSelective(paramItem);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -71,5 +71,12 @@ public class TbItemDubboServiceImpl implements TbItemDubboService {
 		} else {
 			throw new Exception("新增失败");
 		}
+	}
+
+	@Override
+	public List<TbItem> selAllByStutus(byte status) {
+		TbItemExample example = new TbItemExample();
+		example.createCriteria().andStatusEqualTo(status);
+		return tbItemMapper.selectByExample(example);
 	}
 }

@@ -1,12 +1,17 @@
 package com.ego.manage.service.impl;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.ego.commons.pojo.EasyUIDataGrid;
+import com.ego.commons.utils.HttpClientUtil;
 import com.ego.commons.utils.IDUtils;
+import com.ego.commons.utils.JsonUtils;
 import com.ego.dubbo.service.TbItemDescDubboService;
 import com.ego.dubbo.service.TbItemDubboService;
 import com.ego.manage.service.TbItemService;
@@ -22,7 +27,8 @@ public class TbItemServiceImpl implements TbItemService {
 
 	@Reference
 	private TbItemDescDubboService tbItemDescDubboServiceImpl;
-
+	@Value("${search.url}")
+	private String url;
 	@Override
 	public EasyUIDataGrid show(int page, int rows) {
 		// TODO Auto-generated method stub
@@ -46,7 +52,7 @@ public class TbItemServiceImpl implements TbItemService {
 	}
 
 	@Override
-	public int save(TbItem item, String desc,String itemParams) throws Exception  {
+	public int save(TbItem item, String desc, String itemParams) throws Exception {
 		/*
 		 * //不考虑事物 long id = IDUtils.genItemId(); item.setId(id); Date date =
 		 * new Date(); item.setCreated(date); item.setUpdated(date);
@@ -72,7 +78,7 @@ public class TbItemServiceImpl implements TbItemService {
 		itemDesc.setItemId(id);
 		itemDesc.setCreated(date);
 		itemDesc.setUpdated(date);
-		
+
 		TbItemParamItem paramItem = new TbItemParamItem();
 		paramItem.setCreated(date);
 		paramItem.setUpdated(date);
@@ -80,8 +86,20 @@ public class TbItemServiceImpl implements TbItemService {
 		paramItem.setParamData(itemParams);
 
 		int index = 0;
-		index = tbItemDubboServiceImpl.insertTbItemDesc(item, itemDesc,paramItem);
+		index = tbItemDubboServiceImpl.insertTbItemDesc(item, itemDesc, paramItem);
 
+		final TbItem itemFinal = item;
+		final String descFinal = desc;
+		new Thread(){
+			@Override
+			public void run() {
+				Map<String,Object> map=new HashMap<>();
+				map.put("item", itemFinal);
+				map.put("desc",descFinal);
+				HttpClientUtil.doPostJson(url, JsonUtils.objectToJson(map));
+				//使用java代码调用其他项目的控制器
+			}
+		}.start();
 		return index;
 	}
 

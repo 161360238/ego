@@ -22,17 +22,30 @@
 		<zkClient-version>0.10</zkClient-version>
 		<tomcat-version>2.2</tomcat-version>
 		<pagehelper-version>4.1.6</pagehelper-version>
-		<commons-net-version>3.3</commons-net-version>
+		<ftpclient-version>3.3</ftpclient-version>
+		<solrj-version>5.3.1</solrj-version>
+		<httpclient-version>4.4.1</httpclient-version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
-			<!-- FTP -->
+			<!-- httpclient -->
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient</artifactId>
+				<version>${httpclient-version}</version>
+			</dependency>
+			<!-- solrJ -->
+			<dependency>
+				<groupId>org.apache.solr</groupId>
+				<artifactId>solr-solrj</artifactId>
+				<version>${solrj-version}</version>
+			</dependency>
+			<!-- ftpclient -->
 			<dependency>
 				<groupId>commons-net</groupId>
 				<artifactId>commons-net</artifactId>
-				<version>${commons-net-version}</version>
+				<version>${ftpclient-version}</version>
 			</dependency>
-
 			<!-- 分页插件 -->
 			<dependency>
 				<groupId>com.github.pagehelper</groupId>
@@ -164,12 +177,15 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-	<!-- <modules> <module>ego</module> <module>ego-pojo</module> <module>ego-service</module> 
-		<module>ego-service-impl</module> <module>ego-commons</module> <module>ego-manage</module> 
-		</modules> -->
-	<modules>
+	<!-- <modules>
+		<module>ego-pojo</module>
+		<module>ego-service</module>
+		<module>ego-service-impl</module>
+		<module>ego-commons</module>
+		<module>ego-manage</module>
 		<module>ego-portal</module>
 		<module>ego-item</module>
 		<module>ego-redis</module>
-	</modules>
+		<module>ego-search</module>
+	</modules> -->
 </project>

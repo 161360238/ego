@@ -14,31 +14,31 @@
 	<!-- 配置注册中心 -->
 	<dubbo:registry address="192.168.126.128:2181" protocol="zookeeper"></dubbo:registry>
 	<!-- 配置端口 -->
-	<dubbo:protocol name="dubbo" port="20888"></dubbo:protocol>
+	<dubbo:protocol name="dubbo" port="20888" payload="83886080"></dubbo:protocol>
 	<!-- 注册功能 -->
 	<dubbo:service interface="com.ego.dubbo.service.TbItemDubboService"
-		ref="tbItemDubboServiceImpl"></dubbo:service>
+		ref="tbItemDubboServiceImpl" timeout="1200000"></dubbo:service>
 	<bean id="tbItemDubboServiceImpl" class="com.ego.dubbo.service.impl.TbItemDubboServiceImpl"></bean>
 	<!-- 商品类目服务 -->
 	<dubbo:service interface="com.ego.dubbo.service.TbItemCatDubboService"
-		ref="tbItemCatDubboServiceImpl"></dubbo:service>
+		ref="tbItemCatDubboServiceImpl" timeout="1200000"></dubbo:service>
 	<bean id="tbItemCatDubboServiceImpl" class="com.ego.dubbo.service.impl.TbItemCatDubboServiceImpl"></bean>
 	<!-- 商品介绍服务 -->
 	<dubbo:service interface="com.ego.dubbo.service.TbItemDescDubboService"
-		ref="tbItemDescDubboServiceImpl"></dubbo:service>
+		ref="tbItemDescDubboServiceImpl" timeout="1200000"></dubbo:service>
 	<bean id="tbItemDescDubboServiceImpl" class="com.ego.dubbo.service.impl.TbItemDescDubboServiceImpl"></bean>
 	<!-- 规格参数服务 -->
 	<dubbo:service interface="com.ego.dubbo.service.TbItemParamDubboService"
-		ref="tbItemParamDubboServiceImpl"></dubbo:service>
+		ref="tbItemParamDubboServiceImpl" timeout="1200000"></dubbo:service>
 	<bean id="tbItemParamDubboServiceImpl" class="com.ego.dubbo.service.impl.TbItemParamDubboServiceImpl"></bean>
 	<!-- 内容分类 -->
 	<dubbo:service interface="com.ego.dubbo.service.TbContentCategoryDubboService"
-		ref="tbContentCategoryDubboServiceImpl"></dubbo:service>
+		ref="tbContentCategoryDubboServiceImpl" timeout="1200000"></dubbo:service>
 	<bean id="tbContentCategoryDubboServiceImpl"
 		class="com.ego.dubbo.service.impl.TbContentCategoryDubboServiceImpl"></bean>
 	<!-- 具体内容 -->
 	<dubbo:service interface="com.ego.dubbo.service.TbContentDubboService"
-		ref="tbContentDubboServiceImpl"></dubbo:service>
+		ref="tbContentDubboServiceImpl" timeout="1200000"></dubbo:service>
 	<bean id="tbContentDubboServiceImpl" class="com.ego.dubbo.service.impl.TbContentDubboServiceImpl"></bean>
 
 
