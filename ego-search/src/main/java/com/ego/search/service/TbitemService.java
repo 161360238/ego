@@ -14,6 +14,15 @@ public interface TbitemService {
 	 */
 	void init() throws SolrServerException, IOException;
 
+	/**
+	 * 查询商品
+	 * @param query
+	 * @param page
+	 * @param rows
+	 * @return
+	 * @throws SolrServerException
+	 * @throws IOException
+	 */
 	Map<String, Object> selByQuery(String query, int page, int rows) throws SolrServerException, IOException;
 
 	/**

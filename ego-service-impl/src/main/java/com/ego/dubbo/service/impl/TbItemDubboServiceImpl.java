@@ -79,4 +79,10 @@ public class TbItemDubboServiceImpl implements TbItemDubboService {
 		example.createCriteria().andStatusEqualTo(status);
 		return tbItemMapper.selectByExample(example);
 	}
+
+	@Override
+	public TbItem selById(long id) {
+		// TODO Auto-generated method stub
+		return tbItemMapper.selectByPrimaryKey(id);
+	}
 }

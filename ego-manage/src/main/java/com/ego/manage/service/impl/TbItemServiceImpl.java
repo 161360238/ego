@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -18,10 +19,15 @@ import com.ego.manage.service.TbItemService;
 import com.ego.pojo.TbItem;
 import com.ego.pojo.TbItemDesc;
 import com.ego.pojo.TbItemParamItem;
+import com.ego.redis.dao.JedisDao;
 
 @Service
 public class TbItemServiceImpl implements TbItemService {
 
+	@Autowired
+	private JedisDao jedisDaoImpl; 
+	@Value("${redis.item.key}")
+	private String itemKey;
 	@Reference
 	private TbItemDubboService tbItemDubboServiceImpl;
 
@@ -44,6 +50,9 @@ public class TbItemServiceImpl implements TbItemService {
 			tbItem.setId(Long.parseLong(idStr));
 			tbItem.setStatus(status);
 			index += tbItemDubboServiceImpl.update(tbItem);
+			if(status==2||status==3){
+				jedisDaoImpl.del(itemKey+idsStr);
+			}
 		}
 		if (index == idsStr.length) {
 			return 1;

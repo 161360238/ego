@@ -64,7 +64,7 @@ public class TbItemController {
 	@ResponseBody
 	public int add(@RequestBody Map<String, Object> map) {
 		try {
-			return tbitemServiceImpl.add((LinkedHashMap) map, map.get("desc").toString());
+			return tbitemServiceImpl.add((LinkedHashMap) map.get("item"), map.get("desc").toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

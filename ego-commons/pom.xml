@@ -9,6 +9,11 @@
 	<artifactId>ego-commons</artifactId>
 	<dependencies>
 		<dependency>
+			<groupId>com.ego</groupId>
+			<artifactId>ego-pojo</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
 			<groupId>commons-net</groupId>
 			<artifactId>commons-net</artifactId>
 		</dependency>

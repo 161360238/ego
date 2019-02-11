@@ -41,6 +41,11 @@
 		ref="tbContentDubboServiceImpl" timeout="1200000"></dubbo:service>
 	<bean id="tbContentDubboServiceImpl" class="com.ego.dubbo.service.impl.TbContentDubboServiceImpl"></bean>
 
+	<!-- 商品规格参数 -->
+	<dubbo:service interface="com.ego.dubbo.service.TbItemParamItemDubboService"
+		ref="tbItemParamItemDubboServiceImpl"></dubbo:service>
+	<bean id="tbItemParamItemDubboServiceImpl"
+		class="com.ego.dubbo.service.impl.TbItemParamItemDubboServiceImpl"></bean>
 
 	<import resource="../../applicationContext.xml" />
 </beans>

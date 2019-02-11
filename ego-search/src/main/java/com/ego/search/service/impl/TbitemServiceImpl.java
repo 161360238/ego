@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.apache.solr.client.solrj.SolrQuery;
+import org.apache.solr.client.solrj.SolrQuery.ORDER;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.CloudSolrClient;
 import org.apache.solr.client.solrj.response.QueryResponse;
@@ -43,6 +44,8 @@ public class TbitemServiceImpl implements TbitemService {
 
 	@Override
 	public void init() throws SolrServerException, IOException {
+		solrClient.deleteByQuery("*:*");
+		solrClient.commit();
 		// 查询所有正常的商品
 		List<TbItem> listItem = tbItemDubboServiceImpl.selAllByStutus((byte) 1);
 		for (TbItem item : listItem) {
@@ -51,14 +54,15 @@ public class TbitemServiceImpl implements TbitemService {
 			// 商品对应的描述信息
 			TbItemDesc desc = tbItemDescDubboServiceImpl.selByItemid(item.getId());
 			SolrInputDocument doc = new SolrInputDocument();
-			doc.addField("id", item.getId());
-			doc.addField("item_title", item.getTitle());
-			doc.addField("item_sell_point", item.getSellPoint());
-			doc.addField("item_price", item.getPrice());
-			doc.addField("item_image", item.getImage());
-			doc.addField("item_category_name", cat.getName());
+			doc.setField("id", item.getId());
+			doc.setField("item_title", item.getTitle());
+			doc.setField("item_sell_point", item.getSellPoint());
+			doc.setField("item_price", item.getPrice());
+			doc.setField("item_image", item.getImage());
+			doc.setField("item_category_name", cat.getName());
+			doc.setField("item_updated", item.getUpdated());
 			if (desc != null) {
-				doc.addField("item_desc", desc.getItemDesc());
+				doc.setField("item_desc", desc.getItemDesc());
 			}
 			solrClient.add(doc);
 		}
@@ -73,6 +77,7 @@ public class TbitemServiceImpl implements TbitemService {
 		params.setStart(rows * (page - 1));
 		params.setRows(rows);
 		// 设置条件
+		params.setSort("item_updated", ORDER.desc);
 		params.setQuery("item_keywords:" + query);
 		// 设置高亮
 		params.setHighlight(true);

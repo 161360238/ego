@@ -13,6 +13,9 @@
         <dependent-module archiveName="ego-commons-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ego-commons/ego-commons">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="ego-redis-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ego-redis/ego-redis">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="ego-item"/>
         <property name="java-output-path" value="/ego-item/target/classes"/>
     </wb-module>
