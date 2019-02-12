@@ -29,8 +29,18 @@ public interface JedisDao {
 
 	/**
 	 * 取值
+	 * 
 	 * @param key
 	 * @return
 	 */
 	String get(String key);
+
+	/**
+	 * redis存活时间
+	 * 
+	 * @param key
+	 * @param seconds
+	 * @return
+	 */
+	Long expire(String key, int seconds);
 }

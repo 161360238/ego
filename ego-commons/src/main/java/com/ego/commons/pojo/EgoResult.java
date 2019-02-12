@@ -6,6 +6,16 @@ public class EgoResult {
 	private String message;
 	private Object data;
 	
+	private String msg;
+	
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+
 	public String getMessage() {
 		return message;
 	}

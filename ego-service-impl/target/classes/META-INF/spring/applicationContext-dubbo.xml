@@ -46,6 +46,11 @@
 		ref="tbItemParamItemDubboServiceImpl"></dubbo:service>
 	<bean id="tbItemParamItemDubboServiceImpl"
 		class="com.ego.dubbo.service.impl.TbItemParamItemDubboServiceImpl"></bean>
+	<!-- 用户 -->
+	<dubbo:service interface="com.ego.dubbo.service.TbUserDubboService"
+		ref="tbUserDubboServiceImpl"></dubbo:service>
+	<bean id="tbUserDubboServiceImpl"
+		class="com.ego.dubbo.service.impl.TbUserDubboServiceImpl"></bean>
 
 	<import resource="../../applicationContext.xml" />
 </beans>

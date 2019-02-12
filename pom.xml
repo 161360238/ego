@@ -188,4 +188,7 @@
 		<module>ego-redis</module>
 		<module>ego-search</module>
 	</modules> -->
+	<modules>
+		<module>ego-passport</module>
+	</modules>
 </project>
