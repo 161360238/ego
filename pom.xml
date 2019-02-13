@@ -190,5 +190,6 @@
 	</modules> -->
 	<modules>
 		<module>ego-passport</module>
+		<module>ego-cart</module>
 	</modules>
 </project>

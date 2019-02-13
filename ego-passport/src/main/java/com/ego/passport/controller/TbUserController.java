@@ -30,8 +30,14 @@ public class TbUserController {
 	 * @return
 	 */
 	@RequestMapping("user/showLogin")
-	public String showLogin(@RequestHeader("Referer") String url, Model model) {
-		model.addAttribute("redirect", url);
+	public String showLogin(@RequestHeader(value = "Referer", defaultValue = "") String url, Model model,
+			String interurl) {
+		if (interurl != null && !interurl.equals("")) {
+			// 如果点加入购物车，登录后 自动把商品添加到购物车
+			model.addAttribute("redirect", interurl);
+		} else if (!url.equals("")) {
+			model.addAttribute("redirect", url);
+		}
 		return "login";
 	}
 
